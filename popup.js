@@ -6,14 +6,25 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.storage.sync.get("bookmarks", (data) => {
       const bookmarks = data.bookmarks || [];
       bookmarkList.innerHTML = "";
-      bookmarks.forEach((bookmark) => {
+      bookmarks.forEach((bookmark, index) => {
+        const divItem = document.createElement("div");
         const listItem = document.createElement("li");
         const link = document.createElement("a");
         link.href = bookmark.url;
         link.textContent = bookmark.title;
         link.target = "_blank";
         listItem.appendChild(link);
-        bookmarkList.appendChild(listItem);
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", () => {
+          bookmarks.splice(index, 1);
+          chrome.storage.sync.set({ bookmarks }, updateBookmarkList);
+        });
+
+        listItem.appendChild(deleteButton);
+        divItem.appendChild(listItem);
+        bookmarkList.appendChild(divItem);
       });
     });
   }
