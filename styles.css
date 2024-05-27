@@ -1,0 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 18px;
+}
+
+button {
+  display: block;
+  margin-bottom: 10px;
+  border: none;
+}
+button:hover {
+  box-shadow: 0 6px 5px rgba(0, 0, 0, 0.8);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 8px 0;
+}
+
+a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #1a0dab;
+}
+
+a:hover {
+  text-decoration: underline;
+}
